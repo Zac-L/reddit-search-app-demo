@@ -71,7 +71,7 @@ require = (function (modules, cache, entry) {
   return newRequire;
 })({4:[function(require,module,exports) {
 
-console.log('123');
+console.log('123'); // eslint-disable-line
 },{}],6:[function(require,module,exports) {
 
 var global = (1, eval)('this');
