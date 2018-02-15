@@ -1,4 +1,5 @@
 import reddit from './reddit.api';
+import moment from 'moment';
 
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
@@ -23,6 +24,7 @@ searchForm.addEventListener('submit', event => {
       let output = '<div class="card-columns">';
       
       results.forEach(post => {
+        let time = (moment.unix(post.created_utc).format('YYYY-MM-DD HH:mm'));
         const image = post.preview ? post.preview.images[0].source.url : 'https://cdn.comparitech.com/wp-content/uploads/2017/08/reddit-1.jpg';
 
         output += `
@@ -33,6 +35,7 @@ searchForm.addEventListener('submit', event => {
             <p class="card-text">${truncateText(post.selftext, 100)}</p>
             <a href="${post.url}" target="_blank" class="btn btn-primary">Read More</a>
             <hr>
+            <span class="badge badge-secondary">Posted: ${time}</span>
             <span class="badge badge-secondary">Subreddit: ${post.subreddit}</span>
             <span class="badge badge-dark">Score: ${post.score}</span>
             </div>
